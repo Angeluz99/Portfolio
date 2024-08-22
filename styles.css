@@ -1471,7 +1471,7 @@ nav a{
 
         }
         93% {
-            top:43vh;
+            top:45vh;
             justify-content: center;
             scale: 2.5;
             width: 35vw;
@@ -1480,7 +1480,7 @@ nav a{
         }
     
         100% {
-            top:43vh;
+            top:46vh;
             justify-content: center;
             scale: 2.5;
             width: 35vw;
@@ -1739,20 +1739,20 @@ nav a{
         height: 1vw; 
         position: absolute;
         left: 0vw; 
-        top:7.5vw;
+        top:8.5vw;
 
     }
     
     
     .famber{
-        top: 4.5vw;
+        top: 5.5vw;
 
         width: 3vw;
         height: 2vw; 
 
     }
     .fcherry{
-        top: 6vw;
+        top: 7vw;
 
         width: 3vw;
         height: 1vw; 
@@ -1762,28 +1762,28 @@ nav a{
     
     
     .fblue{
-        top: 7vw;
+        top: 8vw;
 
         width: 3vw;
         height: 3vw; 
 
     }
     .fyellow{
-        top: 7vw;
+        top: 8vw;
 
         width: 3vw;
         height: 4vw; 
 
     }
     .flila{
-        top: 4vw;
+        top: 5vw;
 
         width: 3vw;
         height: 3.5vw; 
 
     }
     .fwhiteTwo{
-        top: 4.5vw;
+        top: 5.6vw;
 
         width: 3vw;
         height: 1vw; 
