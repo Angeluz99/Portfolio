@@ -13,8 +13,10 @@
 
 <div class="wrapper"> 
     <span class="social" id="social">
+        <div class="language-switch">
+            <a href="index.html">English</a> 
+          </div> 
         <i class="bi bi-linkedin popper"></i><i class="bi bi-github popper2"></i><i class="bi bi-at popper3"></i><i class="bi bi-youtube popper4"></i>  
-        <!-- <button id="language-switch">Switch to Spanish</button> -->
     </span>
 
     <aside id="aside" class="backColorer">
@@ -31,7 +33,7 @@
         </div>
 
         <nav id="nav" class="fader">
-            <ul>
+            <ul class="navEsp">
                 <li class="popper">
                     <a class="lighther" href="#works">Trabajos</a> 
                 </li>
@@ -48,11 +50,11 @@
 
 
 
-    <div class="about" id="about">
-        <img id="myPhoto" src="photo.png" alt="portrait">
+    <div class="about aboutEsp" id="about">
+        <img class="myPhotoEsp myPhoto" id="myPhoto" src="photo.png" alt="portrait">
         
-        <h1 class="ThisIs">Este es <strong>Angel</strong> Diaz,<strong> Desarrollador Web</strong></h1> 
-        <p>Con experiencia en Front y Back end. Busco un trabajo formal. Me encanta aprender nuevas soluciones y aportar valor a la experiencia de usuario.</p>
+        <h1 class="ThisIs ThisIsEsp">Soy <strong>Angel</strong> Diaz,<strong> Desarrollador Web.</strong></h1> 
+        <p class="aboutPesp">Con experiencia en Front y Back end. Me motiva aprender nuevas soluciones y aportar valor a la experiencia de usuario. Estoy en busca de un trabajo formal.</p>
 
 
     </div>
@@ -124,7 +126,7 @@
 
     <div class="skills" id="skills">
         <h2>Mis Habilidades</h2>  
-        <p class="skillsSub">Llevo aprendiendo programación desde 2021 y llevo 2 años trabajando con empresas locales. En mis trabajos formales he adquirido la capacidad de explicar y ayudar a la gente a entender conceptos e instrucciones mediante un lenguaje sencillo y conciso, así como de persuadir a la gente y vender ideas.</p>
+        <p class="skillsSub">Llevo aprendiendo programación desde 2021 y tengo 2 años trabajando con empresas locales. En mis trabajos formales he adquirido la capacidad de explicar y ayudar a la gente a entender conceptos e instrucciones mediante un lenguaje sencillo y conciso, así como de persuadir a la gente y vender ideas.</p>
 
         <section>         
             <div class="CV">
@@ -134,11 +136,11 @@
             </div>
             <img class="certificationImg" src="CS50W.png" alt="cs50web">
 
-            <p class="certifP">Certificación de desarrollador web otorgada por las universidades de Cambridge, Massachusetts y Harvard.</p> 
+            <p class="certifP certifPesp">Certificado de Desarrollador Web. Por la universidad de Harvard en Cambridge.</p> 
         </section>
         
         <div class="stack">
-            <h4>STACK</h4>
+            <h4 class="stackHead">STACK</h4>
             <section class="stackIcons">
                 <i class=" fa-brands fa-html5"></i>  <i class="fa-brands fa-css3-alt"></i> <i class="fa-brands fa-bootstrap"></i> <i class="fa-brands fa-js"></i> <i class="fa-brands fa-react"></i></i> <i class="fa-brands fa-python"></i>  <i class="fa-brands fa-node"></i><div class="express-js"> <img src="express-js.png" alt="express-js"></div> <div class="django"><img  src="django.png" alt="django"></div>
             </section>
@@ -224,6 +226,22 @@
                 video.pause();
                 // video.currentTime = 0; // Opcional: restablecer el video al inicio
                 });
+            });
+        });
+
+        //blur certification backg
+        const certificationImg = document.querySelector('.certificationImg');
+        const elementsToBlur = document.querySelectorAll('.skillsSub, .CV, .stack');
+
+        certificationImg.addEventListener('mouseover', () => {
+            elementsToBlur.forEach(element => {
+                element.style.filter = 'blur(5px)';
+            });
+        });
+
+        certificationImg.addEventListener('mouseout', () => {
+            elementsToBlur.forEach(element => {
+                element.style.filter = 'none';
             });
         });
 
