@@ -1010,6 +1010,13 @@ nav{
 
 
 }
+
+.social a{
+    border: none;
+    text-decoration: none;
+    color: var(--clear);
+
+}
 .language-switch a{
     font-size: 2vw;
     font-family: Montserrat;
