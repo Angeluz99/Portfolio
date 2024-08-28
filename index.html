@@ -16,7 +16,7 @@
         <div class="language-switch">
              <a href="indexEsp.html">Español</a>
           </div>
-        <a href="https://www.linkedin.com/in/%C3%A1ngel-guadalupe-73355a182/"> <i class="bi bi-linkedin popper"></i></a> <a href="https://github.com/Angeluz99"><i class="bi bi-github popper2"></i></a> <a href="mailto:angelgldiaz@gmail.com"> <i class="bi bi-at popper3"></i></a> <a href="https://www.youtube.com/@angelguadalupelopezdiaz4829"><i class="bi bi-youtube popper4"></i> </a> 
+        <a href="https://www.linkedin.com/in/%C3%A1ngel-guadalupe-73355a182/"> <i class="bi bi-linkedin popper"></i></a> <a href="https://github.com/Angeluz99"><i class="bi bi-github popper2"></i></a> <section  id="copyEmail"> <i class="bi bi-at popper3"></i></section> <a href="https://www.youtube.com/@angelguadalupelopezdiaz4829"><i class="bi bi-youtube popper4"></i> </a> 
     </span>
 
     <aside id="aside" class="backColorer">
@@ -211,7 +211,16 @@
             observer.observe(section);
         });
 
+        //copy email to clipboard
+        document.getElementById('copyEmail').addEventListener('click', function() {
+            const email = 'angelgldiaz@gmail.com';
 
+            // Use the Clipboard API to copy the text
+            navigator.clipboard.writeText(email);
+
+            // Optional: Notify the user that the text has been copied
+            alert('Email copied to clipboard!');
+        });
 
         //video
         document.addEventListener('DOMContentLoaded', function() {

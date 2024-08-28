@@ -1018,9 +1018,9 @@ nav{
 
 }
 .language-switch a{
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-family: Montserrat;
-    color: var(--yellow);
+    color: var(--cherry);
     border: none;
     text-decoration: none;
 }
@@ -1033,7 +1033,7 @@ nav{
 
 .myPhotoEsp{
     left: 35vw;
-    top: 15vh;
+    top: 11vh
 
 
 }
@@ -1046,7 +1046,9 @@ nav{
 
 .aboutPesp{
     font-size: 1.5vw;
-    margin-top: -12vh;
+    margin-top: -35vw;
+    margin-right: 2vw; 
+    margin-left: 0;
 }
 
 
