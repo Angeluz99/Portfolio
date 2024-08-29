@@ -129,9 +129,12 @@ font-size: 5vw;
 
 
 .social i{
+    padding: 0;
     margin-inline: 1.5vw;
     cursor: pointer;
-    transition: all .4s ease-in-out;
+    transition: all .3s ease-in-out;
+    border-radius: 5px;
+    
 
 }
 
@@ -1327,8 +1330,8 @@ nav a{
     }
 
     .social i:hover{
-        transform:scale(1.1);
         color: var(--orange);
+        box-shadow: 0vw 0vw .3vw var(--clear), 0vw 0vw .6vw var(--purple), 0vw 0vw 1.1vw var(--orange); 
 
 
     }
