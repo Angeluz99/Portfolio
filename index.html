@@ -16,7 +16,10 @@
         <div class="language-switch">
              <a href="indexEsp.html">Español</a>
           </div>
-        </a> <section  id="copyEmail"> <i class="bi bi-at popper3"></i></section> <a href="https://www.linkedin.com/in/%C3%A1ngel-guadalupe-73355a182/"> <i class="bi bi-linkedin popper"></i></a> <a href="https://github.com/Angeluz99"><i class="bi bi-github popper2"></i> <a href="https://www.youtube.com/@angelguadalupelopezdiaz4829"><i class="bi bi-youtube popper4"></i> </a> 
+
+
+        <section  id="copyEmail"> <div id="confirmationMessage" class="confirmation-message"></div><i class="bi bi-at popper3"></i></section> <a href="https://www.linkedin.com/in/%C3%A1ngel-guadalupe-73355a182/" target="_blank" rel="noopener noreferrer"> <i class="bi bi-linkedin popper"></i></a> <a href="https://github.com/Angeluz99"target="_blank" rel="noopener noreferrer"><i class="bi bi-github popper2"></i> <a href="https://www.youtube.com/@angelguadalupelopezdiaz4829" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube popper4"></i> </a> 
+
     </span>
 
     <aside id="aside" class="backColorer">
@@ -128,7 +131,7 @@
 
     <div class="skills" id="skills">
         <h2>SKILLS</h2>  
-        <p class="skillsSub">I've been learning programming by doing since 2021, and have been working with local businesses for 2 years. In my formal jobs, I've gained te abilities of explaining and helping people understand concepts and instructions through easy and concise language, as well as persuading people and selling ideas.</p>
+        <p class="skillsSub">I've been learning programming by implementing since 2021, and have been working with local businesses for 2 years. In my formal jobs, I've gained te abilities of explaining and helping people understand concepts and instructions through easy and concise language, as well as persuading people and selling ideas.</p>
 
         <section>         
             <div class="CV">
@@ -218,8 +221,15 @@
             // Use the Clipboard API to copy the text
             navigator.clipboard.writeText(email);
 
-            // Optional: Notify the user that the text has been copied
-            alert('Email copied to clipboard!');
+            // Display a confirmation message
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.textContent = 'Email copied!';
+            confirmationMessage.style.display = 'block'; // Show the message
+
+            // Remove the message after 2 seconds
+            setTimeout(function() {
+                confirmationMessage.style.display = 'none';
+            }, 2000);
         });
 
         //video
@@ -240,7 +250,7 @@
             });
         });
 
-//blur certification backg
+        //blur certification backg
         const certificationImg = document.querySelector('.certificationImg');
         const elementsToBlur = document.querySelectorAll('.skillsSub, .CV, .stack');
 
@@ -257,45 +267,45 @@
         });
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-    // Get the user agent string
-    var userAgent = navigator.userAgent;
+        document.addEventListener('DOMContentLoaded', function() {
+        // Get the user agent string
+        var userAgent = navigator.userAgent;
 
-    // Function to detect if the Facebook in-app browser is being used
-    function isFacebookInAppBrowser() {
-        return userAgent.includes("FBAN") || userAgent.includes("FBAV") || userAgent.includes("FBIOS");
-    }
-
-    // Function to detect the current browser and return the corresponding image source and alt text
-    function getCurrentBrowserImage() {
-        if (isFacebookInAppBrowser()) {
-            return { src: "facebook.png", alt: "Facebook in-app browser" };
-        } else if (userAgent.includes("Chrome")) {
-            return { src: "chrome.png", alt: "Google Chrome" };
-        } else if (userAgent.includes("Safari")) {
-            return { src: "safari.png", alt: "Safari" };
-        } else if (userAgent.includes("Firefox")) {
-            const aside = document.querySelector("#aside");
-            aside.style.backgroundColor = "#1b0c3d"
-            // document.getElementById('nav').classList.remove('fader');
-            document.getElementById('nav').style.top = '29vh'
-
-
-            return { src: "firefox.png", alt: "Firefox" };
-        } else {
-            return { src: "unknown.png", alt: "Por Angel Diaz." };
+        // Function to detect if the Facebook in-app browser is being used
+        function isFacebookInAppBrowser() {
+            return userAgent.includes("FBAN") || userAgent.includes("FBAV") || userAgent.includes("FBIOS");
         }
-    }
 
-    var browserInfo = getCurrentBrowserImage();
-    var browserImage = document.createElement("img");
-    browserImage.src = browserInfo.src;
-    browserImage.alt = browserInfo.alt;
+        // Function to detect the current browser and return the corresponding image source and alt text
+        function getCurrentBrowserImage() {
+            if (isFacebookInAppBrowser()) {
+                return { src: "facebook.png", alt: "Facebook in-app browser" };
+            } else if (userAgent.includes("Chrome")) {
+                return { src: "chrome.png", alt: "Google Chrome" };
+            } else if (userAgent.includes("Safari")) {
+                return { src: "safari.png", alt: "Safari" };
+            } else if (userAgent.includes("Firefox")) {
+                const aside = document.querySelector("#aside");
+                aside.style.backgroundColor = "#1b0c3d"
+                // document.getElementById('nav').classList.remove('fader');
+                document.getElementById('nav').style.top = '29vh'
 
-    // Insert the image into the span element
-    var browserInfoSpan = document.getElementById("browserInfo");
-    browserInfoSpan.appendChild(browserImage);
-});
+
+                return { src: "firefox.png", alt: "Firefox" };
+            } else {
+                return { src: "unknown.png", alt: "Por Angel Diaz." };
+            }
+        }
+
+        var browserInfo = getCurrentBrowserImage();
+        var browserImage = document.createElement("img");
+        browserImage.src = browserInfo.src;
+        browserImage.alt = browserInfo.alt;
+
+        // Insert the image into the span element
+        var browserInfoSpan = document.getElementById("browserInfo");
+        browserInfoSpan.appendChild(browserImage);
+    });
 
 
       </script>

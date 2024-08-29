@@ -75,8 +75,21 @@ body{
     
 }
 
+.confirmation-message{
+    color: var(--orange);
+
+    font-size: 1.5vw;
+    z-index: 1000;
+
+
+}
+
 .bi-at{
-font-size: 5vw;}
+font-size: 5vw;
+}
+
+
+
 @keyframes takedowner {
     85% {
         top:0;
@@ -116,7 +129,7 @@ font-size: 5vw;}
 
 
 .social i{
-    margin-inline: 1vw;
+    margin-inline: 1.5vw;
     cursor: pointer;
     transition: all .4s ease-in-out;
 
@@ -1604,7 +1617,12 @@ nav a{
 
     }
 
-
+    .confirmation-message{
+        font-size: .8vw;
+        padding-left: 2vw;
+        color: var(--orange);
+    
+    }
 
     .social i{
         font-size: 4vw;

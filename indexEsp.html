@@ -15,8 +15,9 @@
     <span class="social" id="social">
         <div class="language-switch">
             <a href="index.html">English</a> 
-          </div> 
-        </a> <section  id="copyEmail"> <i class="bi bi-at popper3"></i></section> <a href="https://www.linkedin.com/in/%C3%A1ngel-guadalupe-73355a182/"> <i class="bi bi-linkedin popper"></i></a> <a href="https://github.com/Angeluz99"><i class="bi bi-github popper2"></i> <a href="https://www.youtube.com/@angelguadalupelopezdiaz4829"><i class="bi bi-youtube popper4"></i> </a> 
+        </div> 
+        <section  id="copyEmail"> <div id="confirmationMessage" class="confirmation-message"></div><i class="bi bi-at popper3" id="bi-at"></i></section> <a href="https://www.linkedin.com/in/%C3%A1ngel-guadalupe-73355a182/" target="_blank" rel="noopener noreferrer"> <i class="bi bi-linkedin popper"></i></a> <a href="https://github.com/Angeluz99"target="_blank" rel="noopener noreferrer"><i class="bi bi-github popper2"></i> <a href="https://www.youtube.com/@angelguadalupelopezdiaz4829" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube popper4"></i> </a> 
+
     </span>
 
     <aside id="aside" class="backColorer">
@@ -126,7 +127,7 @@
 
     <div class="skills" id="skills">
         <h2>Mis Habilidades</h2>  
-        <p class="skillsSub">Llevo aprendiendo programación desde 2021 y tengo 2 años trabajando con empresas locales. En mis trabajos formales he adquirido la capacidad de explicar y ayudar a la gente a entender conceptos e instrucciones mediante un lenguaje sencillo y conciso, así como de persuadir a la gente y vender ideas.</p>
+        <p class="skillsSub">He estado programando páginas desde 2021 y tengo 2 años trabajando con empresas locales. En mis trabajos formales he adquirido la capacidad de explicar y ayudar a la gente a entender conceptos e instrucciones mediante un lenguaje sencillo y conciso, así como de persuadir a la gente y vender ideas.</p>
 
         <section>         
             <div class="CV">
@@ -209,6 +210,28 @@
             observer.observe(section);
         });
 
+               //copy email to clipboard
+        document.getElementById('copyEmail').addEventListener('click', function() {
+            const email = 'angelgldiaz@gmail.com';
+
+            // Use the Clipboard API to copy the text
+            navigator.clipboard.writeText(email);
+
+            // Display a confirmation message
+            const atIcon = document.getElementById('bi-at');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            atIcon.style.display = 'none'; 
+
+            confirmationMessage.textContent = '¡Email copiado!';
+            confirmationMessage.style.display = 'block'; 
+            // Remove the message after 2 seconds
+            setTimeout(function() {
+                confirmationMessage.style.display = 'none';
+                atIcon.style.display = 'block'; 
+
+            }, 1200);
+        });
+
 
 
         //video
@@ -287,6 +310,6 @@
 });
 
 
-      </script>
+    </script>
 </body>
 </html>
