@@ -85,10 +85,10 @@ body {
   color: white;
   top: 0;
   z-index: 110;
-  background-color: var(--purple);
+  background-color: rgba(247, 247, 247, 0);
   display: flex;
   justify-content: end;
-  animation: colorer, takedowner linear;
+  animation: takedowner, colorer linear;
   animation-timeline: scroll();
 }
 
@@ -302,6 +302,11 @@ body {
   width: 2.7vw;
   border: solid 1px;
   border-radius: 5%;
+}
+
+.gridWorks section .django img {
+  width: 2vw;
+  border: solid 0.5px;
 }
 
 .flexContainer {
@@ -1579,6 +1584,7 @@ nav a {
   details {
     cursor: pointer;
   }
+
   .flexContainer details {
     font-size: 1vw;
     transition: all 0.5s ease-out;
@@ -1598,8 +1604,16 @@ nav a {
     left: 24.8vw;
   }
 
+  .guestWork {
+    display: flex;
+  }
+
   .gridWorks section .express-js {
     width: 1.2vw;
+  }
+  .gridWorks section .django img {
+    width: 1.2vw;
+    border: solid 1px;
   }
 
   .videoWork {
