@@ -668,11 +668,63 @@ footer {
   font-family: Raleway;
   color: var(--clear);
 }
-/* footer span{
-    margin-top: 3vw;
 
+.showReportBtn {
+  font-family: Raleway;
+  font-size: 4vw;
+  border: none;
+  border-radius: 10px;
+  color: var(--clear);
+  background: radial-gradient(
+    circle,
+    var(--cherry),
+    var(--purple),
+    var(--orange)
+  );
+  z-index: 9999;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+/* Styling the report overlay */
+#reportOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--clear);
 
-} */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-size: 1.3rem;
+}
+#reportContent {
+  position: fixed;
+  left: 25vw;
+  text-align: center;
+  background: var(--clear);
+  color: var(--dark);
+  padding: 2vw;
+  border-radius: 10px;
+  font-family: Raleway;
+  border: dotted var(--cherry) 1vw;
+}
+
+#reportContent p {
+  font-family: Montserrat;
+}
+#closeReportBtn {
+  color: var(--clear);
+  background-color: var(--cherry);
+  border: none;
+  margin-top: 2vw;
+  cursor: pointer;
+  font-family: Montserrat;
+  border-radius: 10px;
+}
 
 footer img {
   width: 4.5vw;
@@ -1298,6 +1350,12 @@ nav a {
     width: 10vw;
     transform: translate(5vw, 0vw);
   }
+
+  .showReportBtn:hover {
+    transform: scale(1.05);
+    filter: saturate(1.2);
+    color: var(--white);
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -1724,11 +1782,9 @@ nav a {
     height: 35vh;
     font-size: 4vw;
   }
-  /* footer span{
-        margin-top: 3vw;
-
-
-    } */
+  #reportContent {
+    left: 40vw;
+  }
 
   footer img {
     margin-top: 1vw;
@@ -1736,46 +1792,46 @@ nav a {
   }
 
   .fwhiteOne {
-    width: 3vw;
+    width: 5vw;
     height: 1vw;
     position: absolute;
     left: 0vw;
-    top: 8.5vw;
+    top: 10.5vw;
   }
 
   .famber {
-    top: 5.5vw;
+    top: 10vw;
 
     width: 3vw;
     height: 2vw;
   }
   .fcherry {
-    top: 7vw;
+    top: 11vw;
 
     width: 3vw;
     height: 1vw;
   }
 
   .fblue {
-    top: 8vw;
+    top: 12vw;
 
     width: 3vw;
     height: 3vw;
   }
   .fyellow {
-    top: 8vw;
+    top: 12vw;
 
     width: 3vw;
     height: 4vw;
   }
   .flila {
-    top: 5vw;
+    top: 10vw;
 
     width: 3vw;
     height: 3.5vw;
   }
   .fwhiteTwo {
-    top: 5.6vw;
+    top: 10vw;
 
     width: 3vw;
     height: 1vw;
