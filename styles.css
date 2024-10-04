@@ -248,6 +248,12 @@ body {
   margin-top: 1vw;
 }
 
+.works h4 {
+  font-size: 3vw;
+  margin: 0;
+  color: palegoldenrod;
+}
+
 .gridWorks {
   display: grid;
   grid-template-columns: 1fr; /* One column that fills the available space */
@@ -1622,6 +1628,10 @@ nav a {
   .skills h2,
   .contact h2 {
     font-size: 3vw;
+  }
+
+  .works h4 {
+    font-size: 2vw;
   }
 
   .gridWorks {

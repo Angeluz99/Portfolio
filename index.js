@@ -9,6 +9,7 @@ document.addEventListener("mousemove", function (e) {
   photo.style.boxShadow = `${calcX}px ${calcY}px 4px rgba(0,0,0,0.5)`;
 });
 
+//WORK CARDS SLIDE
 const observer = new IntersectionObserver(
   (entries, observer) => {
     entries.forEach((entry) => {
@@ -125,12 +126,24 @@ document.addEventListener("DOMContentLoaded", function () {
   browserInfoSpan.appendChild(browserImage);
 });
 
-//viewport tracker
+//VIEWPORT tracker
+
+// Verificar el archivo HTML actual
+let isSpanish = window.location.pathname.includes("indexEsp.html");
+
+// Definir los nombres de las secciones en ambos idiomas
+const translations = {
+  about: isSpanish ? "Portada" : "About",
+  works: isSpanish ? "Trabajos" : "Works",
+  skills: isSpanish ? "Habilidades" : "Skills",
+  contact: isSpanish ? "Contacto" : "Contact",
+};
 
 const sections = ["about", "works", "skills", "contact"];
+
 let sectionTimes = {};
 
-// Initialize time tracking for each section
+// Inicializar el seguimiento de tiempo para cada sección
 sections.forEach((section) => {
   sectionTimes[section] = {
     startTime: null,
@@ -143,41 +156,38 @@ const viewer = new IntersectionObserver(
     entries.forEach((entry) => {
       const section = entry.target.id;
       if (entry.isIntersecting) {
-        // User has entered the section - record the start time
         sectionTimes[section].startTime = new Date();
       } else if (sectionTimes[section].startTime) {
-        // User has left the section - calculate the total time spent
         const endTime = new Date();
-        const timeSpent = (endTime - sectionTimes[section].startTime) / 1000; // in seconds
+        const timeSpent = (endTime - sectionTimes[section].startTime) / 1000;
         sectionTimes[section].totalTime += timeSpent;
-        sectionTimes[section].startTime = null; // reset start time
+        sectionTimes[section].startTime = null;
       }
     });
   },
-  {
-    threshold: 0.5, // Detect when 50% of the section is visible
-  }
+  { threshold: 0.5 }
 );
 
-// Observe all sections
+// Observar todas las secciones
 sections.forEach((section) => {
-  viewer.observe(document.getElementById(section));
+  const sectionElement = document.getElementById(section);
+  if (sectionElement) {
+    viewer.observe(sectionElement);
+  }
 });
 
-// Show report on button click
+// Mostrar el reporte al hacer clic en el botón
 document.getElementById("showReportBtn").addEventListener("click", () => {
   let reportText = "";
   sections.forEach((section) => {
     const timeSpent = sectionTimes[section].totalTime.toFixed(2);
-    reportText += `${
-      section.charAt(0).toUpperCase() + section.slice(1)
-    }- ${timeSpent} Sec.<br>`;
+    reportText += `${translations[section]}: ${timeSpent} Sec.<br>`;
   });
   document.getElementById("reportText").innerHTML = reportText;
   document.getElementById("reportOverlay").style.display = "flex";
 });
 
-// Close the report and reload the page
+// Cerrar el reporte y recargar la página
 document.getElementById("closeReportBtn").addEventListener("click", () => {
   location.reload();
 });
