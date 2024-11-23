@@ -1,0 +1,133 @@
+// VIEWPORT tracker
+
+// Verificar el archivo HTML actual
+let isSpanish = window.location.pathname.includes("indexEsp.html");
+
+// Definir los nombres de las secciones en ambos idiomas
+const translations = {
+  about: isSpanish ? "Portada" : "About",
+  works: isSpanish ? "Trabajos" : "Works",
+  skills: isSpanish ? "Habilidades" : "Skills",
+  contact: isSpanish ? "Contacto" : "Contact",
+};
+
+// Secciones a observar
+const sections = ["about", "works", "skills", "contact"];
+
+let sectionTimes = {};
+
+// Inicializar el seguimiento de tiempo para cada sección
+sections.forEach((section) => {
+  sectionTimes[section] = {
+    startTime: null,
+    totalTime: 0,
+  };
+});
+
+// Rastreo de tiempo total en la página
+let pageStartTime = new Date(); // Tiempo en el que se cargó la página
+let totalPageTime = 0; // Acumulador de tiempo total en la página
+
+// Función para animar el conteo de tiempo
+function animateCounter(element, start, end, duration) {
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1); // Progreso entre 0 y 1
+    const value = start + progress * (end - start);
+
+    element.innerHTML = `${value.toFixed(2)} Sec.`;
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+// Configurar IntersectionObserver
+const viewer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const section = entry.target.id;
+      if (entry.isIntersecting) {
+        sectionTimes[section].startTime = new Date();
+      } else if (sectionTimes[section].startTime) {
+        const endTime = new Date();
+        const timeSpent = (endTime - sectionTimes[section].startTime) / 1000;
+        sectionTimes[section].totalTime += timeSpent;
+        sectionTimes[section].startTime = null;
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+
+// Observar todas las secciones
+sections.forEach((section) => {
+  const sectionElement = document.getElementById(section);
+  if (sectionElement) {
+    viewer.observe(sectionElement);
+  }
+});
+
+// Formatear el tiempo
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}m ${remainingSeconds.toFixed(1)}s`;
+}
+
+// Mostrar el reporte al hacer clic en el botón
+document.getElementById("showReportBtn").addEventListener("click", () => {
+  // Calcular el tiempo total en la página
+  const currentTime = new Date();
+  totalPageTime = (currentTime - pageStartTime) / 1000; // Tiempo en segundos
+
+  const reportText = document.getElementById("reportText");
+
+  // Agregar los tiempos de las secciones al reporte
+  sections.forEach((section) => {
+    const timeSpent = sectionTimes[section].totalTime.toFixed(1);
+
+    const sectionReport = document.createElement("div");
+    const sectionName = document.createElement("strong");
+    sectionName.textContent = `${translations[section]}: `;
+
+    const timeElement = document.createElement("span");
+    timeElement.textContent = `${timeSpent} Sec.`;
+
+    sectionReport.appendChild(sectionName);
+    sectionReport.appendChild(timeElement);
+    reportText.appendChild(sectionReport);
+
+    // Animar el tiempo mostrado
+    animateCounter(timeElement, 0, sectionTimes[section].totalTime, 500);
+  });
+
+  // Agregar tiempo total en la página al reporte
+  const totalTimeElement = document.createElement("div");
+  const totalTimeLabel = document.createElement("strong");
+  totalTimeLabel.textContent = isSpanish
+    ? "Tiempo total en la página: "
+    : "Total Time on Page: ";
+
+  const totalTimeValue = document.createElement("span");
+  totalTimeValue.textContent = formatTime(totalPageTime);
+
+  totalTimeElement.appendChild(totalTimeLabel);
+  totalTimeElement.appendChild(totalTimeValue);
+  reportText.appendChild(totalTimeElement);
+
+  // Animar el tiempo total
+  animateCounter(totalTimeValue, 0, totalPageTime, 500);
+
+  // Mostrar el reporte
+  document.getElementById("reportOverlay").style.display = "flex";
+});
+
+// Cerrar el reporte y recargar la página
+document.getElementById("closeReportBtn").addEventListener("click", () => {
+  location.reload();
+});

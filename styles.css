@@ -109,26 +109,27 @@ body {
     justify-content: end;
     scale: 1;
     width: 85vw;
+    left: 0vw;
   }
   96% {
-    top: 40vh;
+    top: 30vh;
     justify-content: center;
     scale: 1.5;
-    width: 60vw;
+    width: 50vw;
   }
   98% {
-    top: 45vh;
+    top: 30vh;
     justify-content: center;
     scale: 2.5;
-    width: 60vw;
+    width: 50vw;
   }
 
   100% {
-    top: 45vh;
+    top: 30vh;
     justify-content: center;
     scale: 2.5;
-    width: 60vw;
-    left: 25vw;
+    width: 40vw;
+    left: 35vw;
   }
 }
 
@@ -250,8 +251,9 @@ body {
 
 .works h4 {
   font-size: 3vw;
+  font-weight: 400;
   margin: 0;
-  color: palegoldenrod;
+  color: aliceblue;
 }
 
 .gridWorks {
@@ -675,18 +677,17 @@ footer {
   color: var(--clear);
 }
 
+footer span {
+  font-size: 2vw;
+}
+
 .showReportBtn {
   font-family: Raleway;
   font-size: 4vw;
   border: none;
   border-radius: 10px;
-  color: var(--clear);
-  background: radial-gradient(
-    circle,
-    var(--cherry),
-    var(--purple),
-    var(--orange)
-  );
+  background-color: var(--clear);
+  color: var(--purple);
   z-index: 9999;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -696,6 +697,7 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
+  text-align: center;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
@@ -709,7 +711,6 @@ footer {
 }
 #reportContent {
   position: fixed;
-  left: 25vw;
   text-align: center;
   background: var(--clear);
   color: var(--dark);
@@ -729,6 +730,22 @@ footer {
   margin-top: 2vw;
   cursor: pointer;
   font-family: Montserrat;
+  border-radius: 10px;
+}
+
+.report-bar-container {
+  width: 80%;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin: 10px auto;
+  overflow: hidden;
+  height: 20px;
+}
+
+.report-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--orange));
+  transition: width 1.5s ease-out;
   border-radius: 10px;
 }
 
@@ -1049,6 +1066,25 @@ nav {
 .language-switch {
   position: absolute;
   left: 0;
+  animation: fader2 linear;
+  animation-timeline: scroll();
+}
+
+@keyframes fader2 {
+  0% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .social a {
@@ -1335,7 +1371,7 @@ nav a {
 
   .social i:hover {
     color: var(--orange);
-    box-shadow: 0vw 0vw 0.3vw var(--clear), 0vw 0vw 0.6vw var(--purple),
+    text-shadow: 0vw 0vw 0.3vw var(--clear), 0vw 0vw 0.6vw var(--purple),
       0vw 0vw 1.1vw var(--orange);
   }
 
@@ -1359,8 +1395,7 @@ nav a {
 
   .showReportBtn:hover {
     transform: scale(1.05);
-    filter: saturate(1.2);
-    color: var(--white);
+    color: var(--cherry);
   }
 }
 
@@ -1631,7 +1666,7 @@ nav a {
   }
 
   .works h4 {
-    font-size: 2vw;
+    font-size: 1.5vw;
   }
 
   .gridWorks {

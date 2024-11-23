@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   browserInfoSpan.appendChild(browserImage);
 });
 
-//VIEWPORT tracker
+// VIEWPORT tracker
 
 // Verificar el archivo HTML actual
 let isSpanish = window.location.pathname.includes("indexEsp.html");
@@ -139,6 +139,7 @@ const translations = {
   contact: isSpanish ? "Contacto" : "Contact",
 };
 
+// Secciones a observar
 const sections = ["about", "works", "skills", "contact"];
 
 let sectionTimes = {};
@@ -151,21 +152,55 @@ sections.forEach((section) => {
   };
 });
 
+// Rastreo de tiempo total en la página
+let pageStartTime = new Date(); // Tiempo en el que se cargó la página
+let totalPageTime = 0; // Acumulador de tiempo total en la página
+
+// Función para animar el conteo de tiempo
+function animateCounter(element, start, end, duration, formatFn = null) {
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1); // Progress between 0 and 1
+    const value = start + progress * (end - start);
+
+    // Format the value if formatFn is provided
+    const displayValue = formatFn
+      ? formatFn(value)
+      : `${value.toFixed(2)} Sec.`;
+    element.innerHTML = displayValue;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+// Configurar IntersectionObserver
 const viewer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       const section = entry.target.id;
       if (entry.isIntersecting) {
         sectionTimes[section].startTime = new Date();
+        console.log(`Entering ${section}: Tracking started.`);
       } else if (sectionTimes[section].startTime) {
         const endTime = new Date();
         const timeSpent = (endTime - sectionTimes[section].startTime) / 1000;
         sectionTimes[section].totalTime += timeSpent;
         sectionTimes[section].startTime = null;
+        console.log(
+          `Exiting ${section}: ${timeSpent.toFixed(
+            2
+          )}s added. Total: ${sectionTimes[section].totalTime.toFixed(2)}s.`
+        );
       }
     });
   },
-  { threshold: 0.5 }
+  { threshold: 0.5 } // Adjust threshold for better accuracy
 );
 
 // Observar todas las secciones
@@ -176,14 +211,71 @@ sections.forEach((section) => {
   }
 });
 
+// Formatear el tiempo
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}m ${remainingSeconds.toFixed(1)}s`;
+}
+
 // Mostrar el reporte al hacer clic en el botón
 document.getElementById("showReportBtn").addEventListener("click", () => {
-  let reportText = "";
+  // Stop tracking the Contact section if it's currently being tracked
+  if (sectionTimes.contact.startTime) {
+    const endTime = new Date();
+    const timeSpent = (endTime - sectionTimes.contact.startTime) / 1000;
+    sectionTimes.contact.totalTime += timeSpent;
+    sectionTimes.contact.startTime = null;
+    console.log(
+      `Manually exiting Contact: ${timeSpent.toFixed(
+        2
+      )}s added. Total: ${sectionTimes.contact.totalTime.toFixed(2)}s.`
+    );
+  }
+
+  // Calculate total page time
+  const pageEndTime = new Date();
+  totalPageTime = (pageEndTime - pageStartTime) / 1000;
+
+  // Generate and display the report
+  const reportText = document.getElementById("reportText");
+
   sections.forEach((section) => {
-    const timeSpent = sectionTimes[section].totalTime.toFixed(2);
-    reportText += `${translations[section]}: ${timeSpent} Sec.<br>`;
+    const timeSpent = sectionTimes[section].totalTime.toFixed(1);
+
+    const sectionReport = document.createElement("div");
+    const sectionName = document.createElement("strong");
+    sectionName.textContent = `${translations[section]}: `;
+
+    const timeElement = document.createElement("span");
+    timeElement.textContent = `${timeSpent} Sec.`;
+
+    sectionReport.appendChild(sectionName);
+    sectionReport.appendChild(timeElement);
+    reportText.appendChild(sectionReport);
+
+    // Animate the displayed time
+    animateCounter(timeElement, 0, sectionTimes[section].totalTime, 500);
   });
-  document.getElementById("reportText").innerHTML = reportText;
+
+  // Add total time spent on the page to the report
+  const totalTimeElement = document.createElement("div");
+  const totalTimeLabel = document.createElement("strong");
+  totalTimeLabel.textContent = isSpanish
+    ? "Tiempo total en la página: "
+    : "Total Time on Page: ";
+
+  const totalTimeValue = document.createElement("span");
+  totalTimeValue.textContent = formatTime(totalPageTime);
+
+  totalTimeElement.appendChild(totalTimeLabel);
+  totalTimeElement.appendChild(totalTimeValue);
+  reportText.appendChild(totalTimeElement);
+
+  // Animate the total page time
+  animateCounter(totalTimeValue, 0, totalPageTime, 500, formatTime);
+
+  // Show the report
   document.getElementById("reportOverlay").style.display = "flex";
 });
 
