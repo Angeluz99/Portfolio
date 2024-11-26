@@ -429,6 +429,16 @@ body {
   transform: scale(1.2);
 }
 
+.skills::-webkit-scrollbar {
+  width: 1vw;
+}
+
+.skills::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 5px;
+  border: 1px solid var(--lila);
+}
+
 .stack {
   margin-inline: 2vw;
   margin-top: 6vw;
@@ -544,6 +554,14 @@ body {
   animation: shake 0.5s ease-in-out;
   animation-delay: 0.8s;
 }
+.stack:hover .mongoDB {
+  animation: shake 0.5s ease-in-out;
+  animation-delay: 0.9s;
+}
+.stack:hover .mySQL {
+  animation: shake 0.5s ease-in-out;
+  animation-delay: 1s;
+}
 
 .stack h4,
 .stack section {
@@ -565,13 +583,41 @@ body {
     border-radius: 5%; */
 }
 
-.stack .django img {
+.stack .django img,
+.stackIcons .mySQL img {
   width: 9vw;
   height: auto;
 }
 
+.stackIcons .mongoDB img {
+  width: 7vw;
+  height: auto;
+}
+
+.stackIcons .mongoDB img,
+.stackIcons .mySQL img {
+  filter: invert(100%);
+}
+
 .stack .express-js img {
   width: 8vw;
+}
+
+.stackIcons .mySQL::after {
+  content: "MySQL";
+  display: block;
+  font-size: 0.8vw;
+  text-align: center;
+  margin-top: -1vw;
+  font-weight: bolder;
+}
+.stackIcons .mongoDB::after {
+  content: "MongoDB";
+  display: block;
+  font-size: 0.8vw;
+  text-align: center;
+  margin-top: -1vw;
+  font-weight: bolder;
 }
 
 .stackIcons .fa-html5::after {
@@ -641,7 +687,6 @@ body {
   font-weight: bolder;
 }
 
-/* Ensure images and icons are displayed as block elements for text alignment */
 section i,
 section img {
   display: inline-block;
@@ -730,22 +775,6 @@ footer span {
   margin-top: 2vw;
   cursor: pointer;
   font-family: Montserrat;
-  border-radius: 10px;
-}
-
-.report-bar-container {
-  width: 80%;
-  background-color: #ddd;
-  border-radius: 10px;
-  margin: 10px auto;
-  overflow: hidden;
-  height: 20px;
-}
-
-.report-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--purple), var(--orange));
-  transition: width 1.5s ease-out;
   border-radius: 10px;
 }
 
@@ -1727,7 +1756,7 @@ nav a {
 
   .skills {
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
   }
   .skills h2 {
     margin-left: 1vw;
@@ -1784,7 +1813,7 @@ nav a {
   .stack {
     margin: 0;
     margin-top: 10vw;
-
+    height: 15vw;
     padding: 1vw;
   }
   .stack h4 {
@@ -1794,12 +1823,29 @@ nav a {
 
   .stack section {
     font-size: 5vw;
-    column-gap: 4vw;
+    column-gap: 8vw;
     row-gap: 1vw;
+
+    display: grid;
+    grid-template-columns: repeat(6, auto);
   }
 
-  .stackIcons .express-js img {
+  .stackIcons i {
     width: 4vw;
+  }
+
+  .stackIcons .mongoDB,
+  .stackIcons .mySQL {
+    color: white;
+  }
+
+  .stackIcons .mySQL img {
+    width: 4vw;
+  }
+
+  .stackIcons .express-js img,
+  .stackIcons .mongoDB img {
+    width: 3vw;
   }
 
   .stack .django img {
