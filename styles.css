@@ -1758,9 +1758,16 @@ nav a {
   .gridWorks section .express-js {
     width: 1.2vw;
   }
+  .gridWorks section .typeScript {
+    width: 1.3vw;
+    filter: invert(1);
+  }
   .gridWorks section .django img {
     width: 1.2vw;
     border: solid 1px;
+  }
+  .gridWorks section span .typeScript img {
+    width: 0.5vw;
   }
 
   .videoWork {
