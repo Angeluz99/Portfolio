@@ -234,7 +234,9 @@ body {
   animation: rotater 1s ease-in-out forwards;
   color: var(--orange);
 }
-
+.about p strong {
+  color: var(--clear);
+}
 .works {
   grid-area: works;
   padding: 1vw;
