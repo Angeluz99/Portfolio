@@ -319,6 +319,12 @@ body {
   border: solid 0.5px;
 }
 
+.gridWorks section .typeScript {
+  width: 4.2vw;
+  border-radius: 5%;
+  filter: invert();
+}
+
 .flexContainer {
   position: absolute;
 
