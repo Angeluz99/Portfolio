@@ -304,8 +304,9 @@ body {
   color: var(--clear);
   position: absolute;
   font-size: 3.5vw;
+  width: 25vw;
   top: 2vw;
-  left: 65vw;
+  left: 58vw;
 }
 
 .gridWorks section .express-js {
@@ -338,11 +339,9 @@ body {
   font-size: 2vw;
   transition: all 0.5s ease-out;
   padding-left: 1vw;
-}
-
-.flexContainer details {
   width: 20vw;
 }
+
 .flexContainer p {
   font-size: 2vw;
   width: 25vw;
@@ -1743,12 +1742,12 @@ nav a {
   .flexContainer details {
     font-size: 1vw;
     transition: all 0.5s ease-out;
-    width: 8vw;
+    width: 9vw;
   }
 
   .flexContainer p {
     font-size: 0.9vw;
-    width: 8vw;
+    width: 9vw;
   }
 
   .gridWorks section span {
