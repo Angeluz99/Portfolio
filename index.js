@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // VIEWPORT tracker
 
 // Verificar el archivo HTML actual
-let isSpanish = window.location.pathname.includes("indexEsp.html");
+let isSpanish = window.location.pathname.includes("sp.html");
 
 // Definir los nombres de las secciones en ambos idiomas
 const translations = {
